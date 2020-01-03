@@ -10,6 +10,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EmployeRepository extends JpaRepository<Employe, Long> {
     Employe findByMatricule(String matricule);
@@ -31,4 +32,5 @@ public interface EmployeRepository extends JpaRepository<Employe, Long> {
 
     @Query(value = "SELECT * FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)", nativeQuery = true)
     List<Employe> findEmployePlusRiches();
+
 }
