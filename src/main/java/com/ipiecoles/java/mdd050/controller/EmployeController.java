@@ -4,6 +4,7 @@ import com.ipiecoles.java.mdd050.model.Employe;
 import com.ipiecoles.java.mdd050.repository.CommercialRepository;
 import com.ipiecoles.java.mdd050.repository.EmployeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.web.bind.annotation.*;
 
 import javax.smartcardio.CommandAPDU;
@@ -37,6 +38,15 @@ public class EmployeController {
             @PathVariable(value = "id") Long id)
     {
         return employeRepository.findOne(id);
+    }
+
+
+    @RequestMapping
+    public Employe GetEmployerByMatricule(
+            @RequestParam("matricule") String matricule
+    )
+    {
+        return employeRepository.findByMatricule(matricule);
     }
 
 }
