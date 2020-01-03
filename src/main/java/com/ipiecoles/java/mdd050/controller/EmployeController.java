@@ -4,10 +4,7 @@ import com.ipiecoles.java.mdd050.model.Employe;
 import com.ipiecoles.java.mdd050.repository.CommercialRepository;
 import com.ipiecoles.java.mdd050.repository.EmployeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.smartcardio.CommandAPDU;
 
@@ -27,9 +24,19 @@ public class EmployeController {
         return employeRepository.count();
     }
 
+    /*
+
     @RequestMapping("/6")
     public Employe GetEmployeById(){
         return employeRepository.findOne(6L);
+    }
+
+     */
+    @RequestMapping(value = "/{id}")
+    public Employe GetEmployeById(
+            @PathVariable(value = "id") Long id)
+    {
+        return employeRepository.findOne(id);
     }
 
 }
